@@ -1,9 +1,13 @@
 import React from 'react';
+import About from './About';
+import Skill from './Skill';
 
 const Home = () => {
     return (
         <div>
-            wef
+            <About></About>
+
+            <Skill></Skill>
         </div>
     );
 };
