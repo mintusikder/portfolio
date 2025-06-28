@@ -1,116 +1,89 @@
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import React from "react";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
-const ContactUs = () => {
-  const form = useRef();
-  const [statusMessage, setStatusMessage] = useState("");
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        (result) => {
-          setStatusMessage("🎉 Message sent successfully!");
-          form.current.reset();
-          setTimeout(() => setStatusMessage(""), 5000); // clear message after 5s
-        },
-        (error) => {
-          setStatusMessage("❌ Failed to send the message, please try again.");
-          console.error(error.text);
-          setTimeout(() => setStatusMessage(""), 5000);
-        }
-      );
-  };
-
+const ContactUS = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 flex flex-col md:flex-row items-center justify-center px-6 py-12 md:py-24 gap-12">
-      {/* Left side: Form */}
-      <div className="md:w-1/2 bg-white rounded-3xl shadow-lg p-10 max-w-xl w-full">
-        <h2 className="text-4xl font-extrabold mb-6 text-indigo-700">Get in Touch</h2>
-        <p className="mb-8 text-gray-600 leading-relaxed">
-          Have a question or want to work together? Fill out the form below and I'll get back to you ASAP.
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      {/* Title Section */}
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-10"
+      >
+        <h2 className="text-3xl font-bold text-gray-800">Contact Me</h2>
+        <p className="text-gray-500 mt-2">
+          Feel free to reach out for collaboration, questions, or just to say hi!
         </p>
-        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+      </motion.div>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Contact Form */}
+        <motion.form
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="space-y-6 bg-white p-6 rounded-xl shadow"
+        >
           <div>
-        
+            <label className="block mb-1 font-medium text-gray-700">Your Name</label>
             <input
               type="text"
-              name="user_name"
-              id="name"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Enter your name"
               required
-              placeholder="Your full name"
-              className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
           </div>
-
           <div>
-     
+            <label className="block mb-1 font-medium text-gray-700">Email Address</label>
             <input
               type="email"
-              name="user_email"
-              id="email"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Enter your email"
               required
-              placeholder="you@example.com"
-              className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
           </div>
-
           <div>
-        
-            <input
-              type="text"
-              name="subject"
-              id="subject"
-              required
-              placeholder="Brief topic"
-              className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-            />
-          </div>
-
-          <div>
-       
+            <label className="block mb-1 font-medium text-gray-700">Your Message</label>
             <textarea
-              name="message"
-              id="message"
               rows="5"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+              placeholder="Write your message"
               required
-              placeholder="Write your message here..."
-              className="w-full px-5 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
             ></textarea>
           </div>
-
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-700 transition"
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-300"
           >
             Send Message
           </button>
+        </motion.form>
 
-          {statusMessage && (
-            <p className="mt-4 text-center text-lg font-semibold text-green-600">
-              {statusMessage}
-            </p>
-          )}
-        </form>
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col justify-center gap-6 bg-blue-50 p-6 rounded-xl shadow"
+        >
+          <div className="flex items-center gap-4 text-gray-700">
+            <FaEnvelope className="text-2xl text-blue-600" />
+            <span>yourname@example.com</span>
+          </div>
+          <div className="flex items-center gap-4 text-gray-700">
+            <FaPhone className="text-2xl text-blue-600" />
+            <span>+8801XXXXXXXXX</span>
+          </div>
+          <div className="flex items-center gap-4 text-gray-700">
+            <FaMapMarkerAlt className="text-2xl text-blue-600" />
+            <span>Dhaka, Bangladesh</span>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Right side: Image */}
-      <div className="md:w-1/2 max-w-lg w-full rounded-3xl overflow-hidden shadow-2xl">
-        <img
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
-          alt="Contact illustration"
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </section>
+    </div>
   );
 };
 
-export default ContactUs;
+export default ContactUS;

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import mintu from "../../assets/mintu.png";
 import {
   FaCar,
   FaMusic,
   FaGamepad,
   FaBook,
-  FaReact,
-  FaNodeJs,
   FaGithub,
   FaLinkedin,
 } from "react-icons/fa";
@@ -39,13 +37,18 @@ const About = () => {
     { icon: <FaBook />, label: "Reading" },
   ];
 
+  const fadeSlide = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.4, ease: "easeInOut" } },
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-16 text-gray-800">
-      {/* Heading */}
       <motion.h2
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="text-4xl font-extrabold mb-6 text-[#037bae] text-center"
       >
         About Me
@@ -73,26 +76,22 @@ const About = () => {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="min-h-[200px]">
-        {/* About Tab with Image */}
+      {/* Animated Content */}
+      <AnimatePresence mode="wait">
         {activeTab === "about" && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            key="about"
+            {...fadeSlide}
             className="flex flex-col md:flex-row gap-10 items-center max-w-5xl mx-auto text-left"
           >
-            {/* Profile Image */}
             <div className="w-full md:w-1/3">
               <img
-                src={mintu} // replace with your own image
+                src={mintu}
                 alt="Mintu Sikder"
                 className="rounded-xl shadow-md w-full object-cover"
               />
             </div>
 
-            {/* Text Content */}
             <div className="w-full md:w-2/3">
               <p className="text-lg mb-6">
                 Hi! I’m{" "}
@@ -115,60 +114,59 @@ const About = () => {
                 front-end development.
               </p>
 
-              {/* Social Icons */}
               <div className="flex gap-6 mt-4 text-3xl text-[#037bae]">
                 <FaGithub
                   title="GitHub"
-                  className="hover:text-black cursor-pointer"
+                  className="hover:text-black cursor-pointer transition"
                 />
                 <FaLinkedin
                   title="LinkedIn"
-                  className="hover:text-blue-700 cursor-pointer"
+                  className="hover:text-blue-700 cursor-pointer transition"
                 />
               </div>
             </div>
           </motion.div>
         )}
 
-        {/* Skills Tab */}
         {activeTab === "skills" && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            key="skills"
+            {...fadeSlide}
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
           >
             {skills.map((skill, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-[#037bae]/10 text-[#037bae] text-center font-medium rounded-lg px-4 py-3 shadow-sm hover:scale-105 transition duration-300"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                className="bg-[#037bae]/10 text-[#037bae] text-center font-medium rounded-lg px-4 py-3 shadow-sm"
               >
                 {skill}
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         )}
 
-        {/* Hobbies Tab */}
         {activeTab === "hobbies" && (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            key="hobbies"
+            {...fadeSlide}
             className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto"
           >
             {hobbies.map((hobby, index) => (
-              <div
+              <motion.div
                 key={index}
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 150, damping: 12 }}
                 className="flex flex-col items-center justify-center gap-2 bg-[#037bae]/10 text-[#037bae] p-5 rounded-xl shadow text-center"
               >
                 <div className="text-3xl">{hobby.icon}</div>
                 <p className="font-medium">{hobby.label}</p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </div>
   );
 };
