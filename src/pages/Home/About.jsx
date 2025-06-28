@@ -49,7 +49,7 @@ const About = () => {
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-4xl font-extrabold mb-6 text-[#037bae] text-center"
+        className="text-4xl font-extrabold mb-6 text-primary text-center"
       >
         About Me
       </motion.h2>

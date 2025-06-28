@@ -1,44 +1,92 @@
 import React from "react";
-import { FaFacebook, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+} from "react-icons/fa";
+import { NavLink } from "react-router"; 
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-200 py-10 mt-16">
-      <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-        {/* Logo and Description */}
-        <div>
-          <h2 className="text-2xl font-bold text-white">Mintu Sikder</h2>
-          <p className="mt-2 text-gray-400">
-            React Front-End Developer. Passionate about building user-friendly web apps.
-          </p>
-        </div>
+    <footer className="bg-gray-100 text-gray-700 py-10 px-4">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 text-center">
+        {/* Brand Name */}
+        <p className="text-2xl font-bold text-primary">Mintu Sikder</p>
 
         {/* Navigation Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-gray-400">
-            <li><a href="/" className="hover:text-white">Home</a></li>
-            <li><a href="/about" className="hover:text-white">About</a></li>
-            <li><a href="/projects" className="hover:text-white">Projects</a></li>
-            <li><a href="/contact" className="hover:text-white">Contact</a></li>
-          </ul>
+        <nav className="flex flex-wrap justify-center gap-6 text-sm">
+          <NavLink
+            to="/about"
+            className="hover:text-primary transition font-medium"
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/project"
+            className="hover:text-primary transition font-medium"
+          >
+            Project
+          </NavLink>
+          <NavLink
+            to="/skill"
+            className="hover:text-primary transition font-medium"
+          >
+            Skill
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="hover:text-primary transition font-medium"
+          >
+            Contact Me
+          </NavLink>
+        </nav>
+
+        {/* Social Icons */}
+        <div className="flex gap-6 text-lg text-gray-600">
+          <a
+            href="https://web.facebook.com/mintusikder15/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            className="hover:text-primary transition"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mintusikder/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="hover:text-primary transition"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="https://github.com/mintusikder"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="hover:text-primary transition"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://www.instagram.com/mintu_sikder_/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Twitter"
+            className="hover:text-primary transition"
+          >
+            <FaInstagram />
+          </a>
         </div>
 
-        {/* Social Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">Connect with Me</h3>
-          <div className="flex space-x-4 text-xl">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-500"><FaFacebook /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-400"><FaLinkedin /></a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-white"><FaGithub /></a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-sky-400"><FaTwitter /></a>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="text-center text-sm text-gray-500 mt-10 border-t border-gray-700 pt-6">
-        &copy; {new Date().getFullYear()} Mintu Sikder. All rights reserved.
+        {/* Copyright */}
+        <p className="text-xs text-gray-500 mt-4">
+          © {new Date().getFullYear()} Mintu Sikder — All rights reserved
+        </p>
       </div>
     </footer>
   );

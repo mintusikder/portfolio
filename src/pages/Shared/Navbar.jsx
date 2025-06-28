@@ -31,7 +31,9 @@ const Navbar = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                isActive
+                  ? "text-primary"
+                  : "hover:primary"
               }
             >
               Home
@@ -41,7 +43,9 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                isActive
+                  ? "text-primary"
+                  : "hover:primary"
               }
             >
               About
@@ -49,12 +53,38 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
+              to="/project"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary"
+                  : "hover:primary transition"
+              }
+            >
+              Project
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/skill"
               className={({ isActive }) =>
-                isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                isActive
+                  ? "text-primary"
+                  : "hover:text-primary transition" 
               }
             >
               Skill
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-primary"
+                  : "hover:primary transition"
+              }
+            >
+              Contact Me
             </NavLink>
           </li>
         </ul>
@@ -63,7 +93,7 @@ const Navbar = () => {
         <a
           href="/resume.pdf"
           download
-          className="hidden md:flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2 rounded-full hover:bg-indigo-600 hover:text-white transition cursor-pointer select-none"
+          className="hidden md:flex items-center gap-2 border border-gray-300 text-white px-5 py-2 rounded-full bg-primary  transition cursor-pointer select-none"
           aria-label="Download Resume"
         >
           <AiOutlineDownload size={20} />
@@ -104,7 +134,9 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div
           className={`fixed top-[70px] left-0 w-full bg-white shadow-md md:hidden transition-transform duration-300 ease-in-out z-40 ${
-            isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0 pointer-events-none"
+            isMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-10 opacity-0 pointer-events-none"
           }`}
         >
           <ul className="flex flex-col gap-6 p-6 font-medium text-gray-700">
@@ -113,7 +145,9 @@ const Navbar = () => {
                 to="/"
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
-                  isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                  isActive
+                    ? "text-primary"
+                    : "hover:primary transition"
                 }
               >
                 Home
@@ -124,7 +158,9 @@ const Navbar = () => {
                 to="/about"
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
-                  isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                  isActive
+                    ? "text-primary"
+                    : "hover:primary transition"
                 }
               >
                 About
@@ -135,7 +171,9 @@ const Navbar = () => {
                 to="/skill"
                 onClick={closeMobileMenu}
                 className={({ isActive }) =>
-                  isActive ? "text-indigo-600" : "hover:text-indigo-500 transition"
+                  isActive
+                    ? "text-primary"
+                    : "hover:primary transition"
                 }
               >
                 Skill

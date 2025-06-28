@@ -1,5 +1,6 @@
 import Navbar from "../Shared/Navbar";
 import msLogo from "../../assets/mintu1.png";
+import { Link } from "react-router";
 
 const Hero = () => {
   return (
@@ -29,10 +30,10 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-          <button className="px-7 py-3 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-medium">
+          <a href="https://github.com/mintusikder" className="px-7 py-3 rounded bg-primary  text-white font-medium">
             Explore My Code
-          </button>
-          <button className="group px-7 py-2.5 flex items-center gap-2 font-medium">
+          </a>
+          <Link to={"/contact"} className=" group px-7 py-2.5 flex items-center gap-2 font-medium">
             Hire Me
             <svg
               className="group-hover:translate-x-1 transition pt-0.5"
@@ -50,7 +51,7 @@ const Hero = () => {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

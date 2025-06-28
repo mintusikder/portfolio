@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const Portfolio = () => {
+const Project = () => {
   // Example categories; adjust based on your projects if needed
   const categories = ["All", "React", "MERN", "Tailwind"];
 
@@ -106,4 +106,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Project;

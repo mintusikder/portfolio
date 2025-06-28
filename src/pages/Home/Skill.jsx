@@ -1,20 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaGithub,
-  FaFigma,
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub, FaFigma,
 } from "react-icons/fa";
 import {
-  SiTailwindcss,
-  SiNextdotjs,
-  SiFirebase,
-  SiMongodb,
-  SiExpress,
+  SiTailwindcss, SiNextdotjs, SiFirebase, SiMongodb, SiExpress,
 } from "react-icons/si";
 import { MdDevices } from "react-icons/md";
 
@@ -43,34 +33,29 @@ const Skill = () => {
     { name: "Responsive Design", icon: <MdDevices /> },
   ];
 
-  // Smoother skill card animation with spring and damping
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.85 },
     visible: (i) => ({
       opacity: 1,
       scale: 1,
       transition: {
-        delay: i * 0.12,
+        delay: i * 0.07,
         type: "spring",
-        stiffness: 150,
-        damping: 18,
+        stiffness: 120,
+        damping: 16,
       },
     }),
-  };
-
-  // Smooth fade + slide content animation
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20, transition: { ease: "easeInOut" } },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
     exit: {
       opacity: 0,
-      y: -20,
-      transition: { duration: 0.35, ease: "easeInOut" },
+      scale: 0.9,
+      transition: { duration: 0.3 },
     },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 25 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
   };
 
   const renderSkills = (skills) =>
@@ -80,9 +65,9 @@ const Skill = () => {
         custom={index}
         initial="hidden"
         animate="visible"
-        exit="hidden"
+        exit="exit"
         variants={cardVariants}
-        className="flex flex-col items-center gap-2 bg-[#037bae]/10 text-[#037bae] p-5 rounded-xl shadow hover:shadow-lg transition cursor-default"
+        className="flex flex-col items-center gap-2 bg-[#037bae]/10 text-[#037bae] p-5 rounded-xl shadow hover:shadow-xl transition duration-300 ease-in-out"
       >
         <div className="text-5xl">{skill.icon}</div>
         <p className="font-semibold text-lg">{skill.name}</p>
@@ -92,13 +77,34 @@ const Skill = () => {
   return (
     <div className="bg-gray-100 min-h-screen py-16 px-6 text-gray-800">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-10 text-[#037bae]">My Skills</h2>
+        {/* Animated Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-extrabold mb-10 text-[#037bae]"
+        >
+          My Skills
+        </motion.h2>
 
-        {/* Tabs */}
-        <div className="flex justify-center gap-6 mb-14 flex-wrap">
+        {/* Animated Tabs */}
+        <motion.div
+          className="flex justify-center gap-4 mb-14 flex-wrap"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+        >
           {["frontend", "backend", "tools"].map((tab) => (
-            <button
+            <motion.button
               key={tab}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-2 rounded-full font-semibold transition duration-200 ${
                 activeTab === tab
@@ -107,12 +113,12 @@ const Skill = () => {
               }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Animated Tab Content */}
-        <AnimatePresence mode="wait" initial={false}>
+        {/* Animated Skill Content */}
+        <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             variants={contentVariants}
