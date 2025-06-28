@@ -3,12 +3,11 @@ import msLogo from "../../assets/mintu1.png";
 
 const Hero = () => {
   return (
-    <div className="bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBackground.png')] text-sm text-gray-500">
+    <div>
       {/* Navbar */}
       <Navbar />
-
       {/* Hero Section */}
-      <div className="h-[580px] flex flex-col items-center justify-center px-4 text-center">
+      <div className="h-[555px] flex flex-col items-center justify-center px-4 text-center">
         {/* Profile Image */}
         <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-md">
           <img
