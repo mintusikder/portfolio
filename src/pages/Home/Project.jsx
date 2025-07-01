@@ -1,102 +1,90 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-const Project = () => {
-  // Example categories; adjust based on your projects if needed
-  const categories = ["All", "React", "MERN", "Tailwind"];
+const projects = [
+  {
+    title: "SmartShelf",
+    description:
+      "A responsive and fully functional Library Management System built for a renowned school to manage books, borrowing, and returns efficiently.",
+    image: "https://i.ibb.co/YBxsHLbS/library.png",
+    technologies: ["React", "MongoDB", "Express", "Tailwind", "Firebase"],
+    liveLink: "https://library-system-b602f.web.app/",
+    clientLink: "https://github.com/mintusikder/library-client",
+    serverLink: "https://github.com/mintusikder/library-server",
+  },
+  // Add more projects here...
+];
 
-  const allProjects = [
-    {
-      title: "Event Explorer",
-      image: "https://i.ibb.co/j4qybRZ/event-explorer.png",
-      link: "https://eventexplorer.web.app",
-      description:
-        "A Firebase-authenticated event discovery app with protected routes and dynamic content.",
-      category: "React",
-    },
-    {
-      title: "Library Management System",
-      image: "https://i.ibb.co/9NVDGzB/library.png",
-      link: "https://library-system-client.web.app",
-      description:
-        "A full-stack MERN app for managing book borrow and return with user authentication.",
-      category: "MERN",
-    },
-    {
-      title: "Pet Station",
-      image: "https://i.ibb.co/f8GB96F/pet-station.png",
-      link: "https://mintusikder.github.io/tea-shop/",
-      description:
-        "A modern pet shop website using Tailwind CSS and daisyUI.",
-      category: "Tailwind",
-    },
-  ];
-
-  const [filter, setFilter] = useState("All");
-
-  // Filter projects based on selected category
-  const filteredProjects =
-    filter === "All"
-      ? allProjects
-      : allProjects.filter((p) => p.category === filter);
-
+const Projects = () => {
   return (
-    <section className="bg-white py-20 px-6 text-gray-800 min-h-screen">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-6">My Portfolio</h2>
-        <p className="text-gray-600 max-w-3xl mx-auto mb-12">
-          Explore my projects. Click any project to learn more.
-        </p>
-
-        {/* Filter Buttons */}
-        <div className="flex justify-center gap-4 mb-16 flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-5 py-2 rounded-full font-semibold transition ${
-                filter === cat
-                  ? "bg-indigo-600 text-white shadow-lg"
-                  : "bg-gray-200 text-gray-700 hover:bg-indigo-100"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+    <section id="projects" className="py-16 bg-gray-50 text-gray-800">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-3 text-primary">My Projects</h2>
+          <p className="text-gray-600">
+            Here are some of the frontend projects I've built
+            recently.
+          </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid gap-12 md:grid-cols-2">
-          {filteredProjects.map((project, idx) => (
+        <div className="flex flex-col gap-10">
+          {projects.map((project, index) => (
             <motion.div
-              key={idx}
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden"
             >
-              {/* Project Image */}
               <img
+                loading="lazy"
                 src={project.image}
                 alt={project.title}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full object-contain max-h-[400px] bg-white"
               />
 
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-6 text-center">
-                <h3 className="text-white text-2xl font-bold mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-gray-200 mb-6">{project.description}</p>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-indigo-600 px-6 py-2 rounded text-white font-semibold hover:bg-indigo-700 transition"
-                >
-                  View Project →
-                </a>
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
+                <p className="mb-3 text-gray-600">{project.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm font-medium">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary hover:text-blue-600 transition-colors"
+                  >
+                    🔗 Live Site
+                  </a>
+                  <a
+                    href={project.clientLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    💻 Client Code
+                  </a>
+                  <a
+                    href={project.serverLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray-600 hover:text-gray-800 transition-colors"
+                  >
+                    🛠 Server Code
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -106,4 +94,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Projects;

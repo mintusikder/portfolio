@@ -39,8 +39,16 @@ const About = () => {
 
   const fadeSlide = {
     initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.4, ease: "easeInOut" } },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeInOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.4, ease: "easeInOut" },
+    },
   };
 
   return (
@@ -94,18 +102,14 @@ const About = () => {
 
             <div className="w-full md:w-2/3">
               <p className="text-lg mb-6">
-                Hi! I’m{" "}
-                <span className="text-[#037bae] font-bold">Mintu Sikder</span>,
-                a passionate Junior Front-End Web Developer with a strong
-                foundation in building interactive and responsive web interfaces
-                using modern technologies like React.js, Next.js, and Tailwind
-                CSS.
+                Hi! I’m Mintu Sikder a passionate Junior Front-End Web Developer
+                with a strong foundation in building interactive and responsive
+                web interfaces using modern technologies like React.js, Next.js,
+                and Tailwind CSS.
               </p>
               <p className="text-lg mb-6">
-                I’ve worked on several real-world projects including{" "}
-                <strong>EventSphere</strong>, a full-stack event booking
-                platform. My goal is to continuously grow by learning from
-                hands-on experiences, contributing to exciting projects, and
+                My goal is to continuously grow by learning from hands-on
+                experiences, contributing to exciting projects, and
                 collaborating with other developers.
               </p>
               <p className="text-lg mb-6">
@@ -115,14 +119,26 @@ const About = () => {
               </p>
 
               <div className="flex gap-6 mt-4 text-3xl text-[#037bae]">
-                <FaGithub
-                  title="GitHub"
-                  className="hover:text-black cursor-pointer transition"
-                />
-                <FaLinkedin
-                  title="LinkedIn"
-                  className="hover:text-blue-700 cursor-pointer transition"
-                />
+                <a
+                  href="https://github.com/mintusikder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub
+                    title="GitHub"
+                    className="hover:text-black cursor-pointer transition"
+                  />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mintusikder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin
+                    title="LinkedIn"
+                    className="hover:text-blue-700 cursor-pointer transition"
+                  />
+                </a>
               </div>
             </div>
           </motion.div>
