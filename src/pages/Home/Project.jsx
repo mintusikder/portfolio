@@ -3,11 +3,35 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "The Garden Glow",
+    description:
+      "Developed a responsive and interactive platform connecting gardening enthusiasts to share tips, explore expert gardeners, and access trending gardening advice. Features user authentication, dynamic content   loading, and a clean, eco-friendly design focused on community engagement and sustainability.",
+    image: "https://i.ibb.co/HTbBwNtY/Screenshot-50.png",
+    technologies: [
+      "React",
+      "MongoDB",
+      "Express",
+      "Node.js",
+      "Tailwind",
+      "Firebase",
+    ],
+    liveLink: "https://gardening-community.web.app/",
+    clientLink: "https://github.com/mintusikder/gardening-client",
+    serverLink: "https://github.com/mintusikder/gardening-server",
+  },
+  {
     title: "SmartShelf",
     description:
-      "A responsive and fully functional Library Management System built for a renowned school to manage books, borrowing, and returns efficiently.",
+      "Built a web application for managing books, borrowing, and returns. Implemented user  authentication, protected routes, user-based access, and dynamic book filtering. Enabled real-time updates to book availability and personalized user dashboards.",
     image: "https://i.ibb.co/YBxsHLbS/library.png",
-    technologies: ["React", "MongoDB", "Express", "Tailwind", "Firebase"],
+    technologies: [
+      "React",
+      "MongoDB",
+      "Express",
+      "Node.js",
+      "Tailwind",
+      "Firebase",
+    ],
     liveLink: "https://library-system-b602f.web.app/",
     clientLink: "https://github.com/mintusikder/library-client",
     serverLink: "https://github.com/mintusikder/library-server",
@@ -22,8 +46,7 @@ const Projects = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-3 text-primary">My Projects</h2>
           <p className="text-gray-600">
-            Here are some of the frontend projects I've built
-            recently.
+            Here are some of the frontend projects I've built recently.
           </p>
         </div>
 

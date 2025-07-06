@@ -183,7 +183,7 @@ const Navbar = () => {
             {/* Resume Button Mobile */}
             <li>
               <a
-                href="/resume.pdf"
+                href="/resume"
                 download
                 onClick={closeMobileMenu}
                 className="flex items-center gap-2 border border-gray-300 text-gray-700 px-5 py-2 rounded-full hover:bg-indigo-600 hover:text-white transition cursor-pointer select-none"
