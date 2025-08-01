@@ -91,7 +91,7 @@ const Navbar = () => {
 
         {/* Resume Download Button Desktop */}
         <a
-          href="/resume.pdf"
+          href="/public/Resume of Mintu Sikder.pdf"
           download
           className="hidden md:flex items-center gap-2 border border-gray-300 text-white px-5 py-2 rounded-full bg-primary  transition cursor-pointer select-none"
           aria-label="Download Resume"
