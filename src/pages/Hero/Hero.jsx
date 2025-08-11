@@ -1,39 +1,83 @@
 import Navbar from "../Shared/Navbar";
 import msLogo from "../../assets/image.png";
 import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 const Hero = () => {
   return (
     <div>
       {/* Navbar */}
       <Navbar />
+
       {/* Hero Section */}
-      <div className="h-[555px] flex flex-col items-center justify-center px-4 text-center">
+      <div className="min-h-[555px] flex flex-col items-center justify-center px-4 text-center">
         {/* Profile Image */}
-        <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-md">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
+        >
           <img
             src={msLogo}
             alt="Mintu Sikder"
-            className="w-full h-full object-cover object-top scale-110"
+            className="w-full h-full object-cover object-top"
           />
-        </div>
+        </motion.div>
 
         {/* Heading */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold max-w-4xl text-gray-800 mt-6">
-          Hi, I’m Mintu Sikder
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-3xl sm:text-5xl md:text-6xl font-extrabold max-w-4xl mt-6 
+             bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
+             bg-clip-text text-transparent leading-tight tracking-tight"
+        >
+          <Typewriter
+            words={["Hi, I’m Mintu Sikder"]}
+            loop={1}
+            cursor
+            cursorStyle="|"
+            typeSpeed={80}
+            deleteSpeed={50}
+            delaySpeed={1500}
+          />
+        </motion.h1>
 
         {/* Description */}
-        <p className="max-w-xl text-center mt-6 px-4">
-          I’m a dedicated front-end developer with a strong eye for design and detail. I build fast, responsive, and visually appealing web apps using React, Next.js, and modern UI frameworks. My mission is to craft seamless and accessible user experiences.
-        </p>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-xl mt-6 px-4 text-gray-600 text-lg"
+        >
+          I’m a dedicated front-end developer with a strong eye for design and
+          detail. I build fast, responsive, and visually appealing web apps
+          using React, Next.js, and modern UI frameworks. My mission is to craft
+          seamless and accessible user experiences.
+        </motion.p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-          <a href="https://github.com/mintusikder" className="px-7 py-3 rounded bg-primary  text-white font-medium">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+        >
+          <a
+            href="https://github.com/mintusikder"
+            target="_blank"
+            rel="noreferrer"
+            className="px-7 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition"
+          >
             Explore My Code
           </a>
-          <Link to={"/contact"} className=" group px-7 py-2.5 flex items-center gap-2 font-medium">
+          <Link
+            to={"/contact"}
+            className="group px-7 py-3 rounded-lg border border-gray-400 flex items-center gap-2 font-medium text-gray-700 hover:bg-gray-100 transition"
+          >
             Hire Me
             <svg
               className="group-hover:translate-x-1 transition pt-0.5"
@@ -52,7 +96,7 @@ const Hero = () => {
               />
             </svg>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

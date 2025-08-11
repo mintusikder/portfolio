@@ -37,8 +37,7 @@ const projects = [
     features: [
       "Real-time book availability tracking",
       "Borrow/return with confirmation modal",
-      "User-based dashboard (student/teacher)",
-      "Admin controls with update/delete",
+      "User controls with update/delete",
     ],
     image: libraryImg,
     technologies: [
