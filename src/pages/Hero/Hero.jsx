@@ -1,5 +1,5 @@
 import Navbar from "../Shared/Navbar";
-import msLogo from "../../assets/mintu1.png";
+import msLogo from "../../assets/image.png";
 import { Link } from "react-router";
 
 const Hero = () => {
